@@ -17,5 +17,7 @@ public class fio {
 
         System.out.println("Инициалы: " + name_list[0] + " " + name_list[1].substring(0, 1).toUpperCase()
                          + "." + name_list[2].substring(0, 1).toUpperCase() + ".");
+
+        scanner.close();
     }
 }
