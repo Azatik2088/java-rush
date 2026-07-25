@@ -1,19 +1,35 @@
 package todo_list;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class todo_list {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> tasks = new ArrayList<>();
 
         while (true) {
             printStartMenu();
             int choice = getValidChoise(scanner);
-            break;
+            
+            switch (choice) {
+                case 1:
+                    showTasks(tasks);
+                    break;
+                case 2:
+                    addTask(tasks, scanner);
+                    System.out.println("Задача добавлена!");
+                    break;
+                case 3:
+                    deleteTask(tasks, scanner);
+                    break;
+                case 4:
+                    scanner.close();
+                    System.exit(0);
+                    break;                                                            
+            }
+            System.out.println();
         }
-
-        scanner.close();
-        
     }
 
 
@@ -40,13 +56,60 @@ public class todo_list {
             }
 
             int choice = scanner.nextInt();
+            scanner.nextLine(); 
 
             if (choice < 1 || choice > 4) {
                 System.out.println("Число от 1 до 4 должно быть, ишак)");
                 continue;
             } 
-
+            
             return choice;
         }
+    }
+
+
+    //метод для показа списка задач
+    public static void showTasks(ArrayList<String> tasks) {
+        if (tasks.isEmpty() || tasks == null){
+            System.out.println("Список задач пуст");
+        }
+        else {
+            int count = 0;
+            for(String task : tasks) {
+                System.out.println(++count + ". " + task);
+            }
+        }
+    }
+
+
+    //методод для добавления задачи
+    public static void addTask(ArrayList<String> tasks, Scanner scanner) {
+        System.out.print("Введите описание задачи: ");
+        String task = scanner.nextLine();        
+        tasks.add(task);
+    }
+
+
+    //метод для удаления задачи из списка
+    public static void deleteTask(ArrayList<String> tasks, Scanner scanner) {
+
+
+        if (tasks.isEmpty()){
+            System.out.println("Список задач пуст, удалять нечего");
+        }
+        else {
+            System.out.print("Введите номер задачи для удаления: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (choice < 1 || choice > tasks.size()) {
+                System.out.println("Задачи под таким номером нет в списке!");
+            }
+            else {
+                tasks.remove(choice - 1);
+                System.out.println("Задача успешно удалена!");
+            }
+        }
+
     }
 }
