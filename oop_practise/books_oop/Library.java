@@ -1,10 +1,11 @@
 package oop_practise.books_oop;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    private List<Book> books = new ArrayList<>();
+    private final List<Book> books = new ArrayList<>();
 
 
     //добавить книгу в бибтиотеку
@@ -61,5 +62,43 @@ public class Library {
     //проверка библиотеки на пустоту
     public boolean checkEmptyLibrary() {
         return books.isEmpty();
+    }
+
+
+    public void saveToFile(String fileName) {
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+            for(Book book : books) {
+                writer.write(book.getTitle() + "|" +
+                                book.getAuthor() + "|" +
+                                book.getYear() + "|" +
+                                book.isAvailable());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка при сохранении: " + e.getMessage());
+        }
+    }
+
+
+    public void loadFile(String fileName) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                String title = parts[0];
+                String author = parts[1];
+                int year = Integer.parseInt(parts[2]);
+                boolean available = Boolean.parseBoolean(parts[3]);
+
+                Book book = new Book(title, author, year);
+
+                if(!available) {
+                    book.borrow();
+                }
+                books.add(book);
+            }
+        } catch (IOException e) {
+            System.out.println("Файл не найден или пуст.");
+        }
     }
 }

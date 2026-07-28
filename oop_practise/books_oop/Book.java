@@ -1,8 +1,8 @@
 package oop_practise.books_oop;
 
 public class Book {
-    private String title;
-    private String author;
+    private final String title;
+    private final String author;
     private int year;
     private boolean isAvailable;
 
@@ -17,7 +17,6 @@ public class Book {
         } else {
             this.year = year;
         }
-
     }
 
 

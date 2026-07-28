@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class todo_list {
-    public static void main(String[] args) {
+    void main() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> tasks = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class todo_list {
 
     //метод для показа списка задач
     public static void showTasks(ArrayList<String> tasks) {
-        if (tasks.isEmpty() || tasks == null){
+        if (tasks.isEmpty()){
             System.out.println("Список задач пуст");
         }
         else {

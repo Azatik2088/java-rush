@@ -1,12 +1,14 @@
 package oop_practise.books_oop;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     void main() {
         Library library = new Library();
         Scanner scanner = new Scanner(System.in);
-
+        String fileName = "library.txt";
+        library.loadFile(fileName);
 
         while (true) {
             printStartMenu();
@@ -33,6 +35,7 @@ public class Main {
 
                     Book book = new Book(title, author, year);
                     library.addBook(book);
+                    System.out.println("Книга успешно добавлена!");
                     break;
                 case 3:
                     System.out.println("Введите название книги: ");
@@ -58,6 +61,9 @@ public class Main {
                     }
                     break;
                 case 6:
+                    library.saveToFile(fileName);
+                    break;
+                case 7:
                     scanner.close();
                     System.exit(0);
                     break;
@@ -72,7 +78,8 @@ public class Main {
         System.out.println("3. Взять книгу");
         System.out.println("4. Вернуть книгу");
         System.out.println("5. Найти книгу");
-        System.out.println("6. Выйти");
+        System.out.println("6. Сохранить библиотеку в файл");
+        System.out.println("7. Выйти");
         System.out.print("Выберите действие: ");
     }
 
@@ -82,8 +89,8 @@ public class Main {
 
             int choice = getValidIntegerValue(scanner);
 
-            if (choice < 1 || choice > 6) {
-                System.out.println("Число от 1 до 6 должно быть, ишак)");
+            if (choice < 1 || choice > 7) {
+                System.out.println("Число от 1 до 7  должно быть, ишак)");
                 continue;
             }
             return choice;
