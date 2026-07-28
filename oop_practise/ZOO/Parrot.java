@@ -1,9 +1,7 @@
 package oop_practise.ZOO;
 
-import java.util.Scanner;
-
-public class Parrot extends Animal{
-    private boolean canSpeak;
+public class Parrot extends Animal implements Flyable{
+    private final boolean canSpeak;
 
     public Parrot(String name, int age, boolean canSpeak) {
         super(name, age);
@@ -18,5 +16,10 @@ public class Parrot extends Animal{
         } else {
             System.out.println("Чирик-чирик");
         }
+    }
+
+    @Override
+    public void fly() {
+        System.out.printf("%s летит", getName());
     }
 }

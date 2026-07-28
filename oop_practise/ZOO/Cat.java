@@ -1,8 +1,8 @@
 package oop_practise.ZOO;
 
-public class Cat extends Dog{
-    public Cat(String name, int age, String breed) {
-        super(name, age, breed);
+public class Cat extends Animal{
+    public Cat(String name, int age) {
+        super(name, age);
     }
 
 

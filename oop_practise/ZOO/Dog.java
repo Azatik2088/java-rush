@@ -17,7 +17,7 @@ public class Dog extends Animal{
 
     @Override
     public void displayInfo() {
-        System.out.printf("Имя: %s Возраст: %d Порода: %s",
+        System.out.printf("Имя: %s Возраст: %d Порода: %s%n",
                 getName(), getAge(), breed);
     }
 }

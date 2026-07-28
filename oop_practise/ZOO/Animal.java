@@ -1,6 +1,6 @@
 package oop_practise.ZOO;
 
-public class Animal {
+public abstract class Animal implements Soundable {
     private final String name;
     private final int age;
 
@@ -20,14 +20,11 @@ public class Animal {
         return age;
     }
 
-
-    public void makeSound() {
-        System.out.println("Животное издает звук");
-    }
+    public abstract void makeSound();
 
 
     public void displayInfo() {
-        System.out.printf("Имя: %s Возраст: %d", name, age);
+        System.out.printf("Имя: %s Возраст: %d%n", name, age);
     }
 
 
