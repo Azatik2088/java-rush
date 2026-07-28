@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Main {
-    void main() {
+    public static void main(String[] args) {
         Library library = new Library();
         Scanner scanner = new Scanner(System.in);
         String fileName = "library.txt";
