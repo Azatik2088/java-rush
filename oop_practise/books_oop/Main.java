@@ -1,13 +1,12 @@
 package oop_practise.books_oop;
 
-import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Library library = new Library();
         Scanner scanner = new Scanner(System.in);
-        String fileName = "library.txt";
+        String fileName = "todo_list/cull_polni/library.txt";
         library.loadFile(fileName);
 
         while (true) {
