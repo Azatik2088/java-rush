@@ -7,15 +7,33 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Figure> figures = new ArrayList<>(Arrays.asList(
-                new Circle("Круг", 5),
-                new Rectangle("Прямоугольник", 10, 5),
-                new Triangle("Треугольник", 3, 4, 5)
-        ));
-        Collections.sort(figures);
+        List<Figure> figures = new ArrayList<>();
 
-        for (Figure figure: figures) {
-            figure.displayInfo();
+        try {
+            Circle circle = new Circle("Круг", 5);
+            figures.add(circle);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка: " + e.getMessage());
         }
+        try {
+            Rectangle circle = new Rectangle("Прямоугольник", 5, 6);
+            figures.add(circle);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+        try {
+            Triangle circle = new Triangle("Треугольник", 5, 6, 7);
+            figures.add(circle);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+        if(!figures.isEmpty()) {
+            Collections.sort(figures);
+            System.out.println("Корректные фигуры");
+            figures.forEach(el -> el.displayInfo());
+        } else {
+            System.out.println("Список фигур пуст, выводить нечего");
+        }
+
     }
 }

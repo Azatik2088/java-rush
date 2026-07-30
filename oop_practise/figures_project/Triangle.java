@@ -11,7 +11,6 @@ public class Triangle extends Figure {
                     "Стороны треугольника должны быть положительными числами"
             );
         }
-
         if (!isTriangleExist(slideA, slideB, slideC)) {
             throw new IllegalArgumentException(
                     String.format("Треугольник со сторонами %.2f, %.2f, %.2f не существует",

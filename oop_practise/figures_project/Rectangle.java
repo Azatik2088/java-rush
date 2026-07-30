@@ -5,14 +5,20 @@ public class Rectangle extends Figure{
 
     public Rectangle(String name, double width, double height) {
         super(name);
-        if (isValidSide(width) && isValidSide(height)) {
-            this.width = width;
-            this.height = height;
-        } else {
-            System.out.println("Ширина и высота должны быть больше 0, установлено дефолтное значение 1");
-            this.width = 1;
-            this.height = 1;
+
+        if (!isValidSide(width)) {
+            throw new IllegalArgumentException(
+                    "Ширина должна быть больше 0"
+            );
         }
+        if (!isValidSide(height)) {
+            throw new IllegalArgumentException(
+                    "Высота должна быть больше 0"
+            );
+        }
+
+        this.width = width;
+        this.height = height;
     }
 
 

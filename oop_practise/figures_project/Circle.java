@@ -6,12 +6,13 @@ public class Circle extends Figure{
 
     public Circle(String name, double radius) {
         super(name);
-        if (isValidSide(radius)) {
-            this.radius = radius;
-        } else {
-            System.out.println("Радиус должен быть больше 0, установлено дефолтное значение 1");
-            this.radius = 1;
+
+        if (!isValidSide(radius)) {
+            throw new IllegalArgumentException(
+                    "Радиус должен быть больше 0"
+            );
         }
+        this.radius = radius;
 
     }
 
