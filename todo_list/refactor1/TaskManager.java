@@ -17,18 +17,24 @@ public class TaskManager {
         return tasks;
     }
 
+    //setter
+    public void setTasks(List<Task> tasks) {
+        this.tasks = new ArrayList<>(tasks);
+    }
 
     //method to add task
     public void addTask(Task task) {
         tasks.add(task);
+        System.out.println("Задача успешно добавлена");
     }
 
 
     //print tasks
     public void showTasks() {
-        if (tasks.isEmpty()) {
+        if (isListEmpty()) {
             System.out.println("Список задач пуст, добавьте задачи");
         } else {
+            System.out.println("Вот ваш список задач :)");
             int count = 1;
             for (Task task : tasks) {
                 System.out.printf("%d. %s%n", count++, task);
@@ -39,7 +45,7 @@ public class TaskManager {
 
     //method to delete task
     public void deleteTask(int index) {
-        if (isEmpty()) {
+        if (isListEmpty()) {
             System.out.println("Список задач пуст, удалять нечего");
             return;
         }
@@ -50,9 +56,9 @@ public class TaskManager {
     }
 
 
-    //сделать зада
+    //сделать задачу выполненной
     public void markDone(int index) {
-        if (isEmpty()) {
+        if (isListEmpty()) {
             System.out.println("Список задач пуст, удалять нечего");
             return;
         }
@@ -84,7 +90,7 @@ public class TaskManager {
     }
 
 
-    private boolean isEmpty() {
+    private boolean isListEmpty() {
         return tasks.isEmpty();
     }
 }
